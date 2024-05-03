@@ -1,0 +1,46 @@
+title: 'macOS 14.0: Security Configuration - MacOSRules (Tailored from CIS_LVL1)'
+description: |
+  This guide describes the actions to take when securing a macOS 14.0
+  system against the MacOSRules (Tailored from CIS_LVL1) security baseline.
+authors: "*macOS Security Compliance Project*\n\nThe CIS Benchmarks are referenced
+  with the permission and support of the Center for Internet Security\xAE (CIS\xAE)\n|===\n|Edward
+  Byrd|Center for Internet Security\n|Ron Colvin|Center for Internet Security\n|Allen
+  Golbig|Jamf\n|===\n"
+parent_values: cis_lvl1
+profile:
+- section: macos
+  rules:
+  - os_airdrop_disable
+  - os_anti_virus_installed
+  - os_authenticated_root_enable
+  - os_config_data_install_enforce
+  - os_firewall_log_enable
+  - os_gatekeeper_enable
+  - os_guest_folder_removed
+  - os_home_folders_secure
+  - os_httpd_disable
+  - os_install_log_retention_configure
+  - os_mdm_require
+  - os_mobile_file_integrity_enable
+  - os_nfsd_disable
+  - os_on_device_dictation_enforce
+  - os_password_hint_remove
+  - os_power_nap_disable
+  - os_root_disable
+  - os_safari_advertising_privacy_protection_enable
+  - os_safari_open_safe_downloads_disable
+  - os_safari_popups_disabled
+  - os_safari_prevent_cross-site_tracking_enable
+  - os_safari_show_full_website_address_enable
+  - os_safari_show_status_bar_enabled
+  - os_safari_warn_fraudulent_website_enable
+  - os_show_filename_extensions_enable
+  - os_sip_enable
+  - os_software_update_deferral
+  - os_sudo_timeout_configure
+  - os_sudoers_timestamp_type_configure
+  - os_system_wide_applications_configure
+  - os_terminal_secure_keyboard_enable
+  - os_time_offset_limit_configure
+  - os_unlock_active_user_session_disable
+  - os_world_writable_system_folder_configure
