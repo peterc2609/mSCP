@@ -597,6 +597,9 @@ usage=(
 
 zparseopts -D -E -help=flag_help -check=check -fix=fix -stats=stats -compliant=compliant_opt -non_compliant=non_compliant_opt -reset=reset -reset-all=reset_all -cfc=cfc -quiet:=quiet || { print -l $usage && return }
 
+#Set the CFC flag to be true as we can not send it on the command line
+cfc=true
+
 [[ -z "$flag_help" ]] || { print -l $usage && return }
 
 if [[ ! -z $quiet ]];then
