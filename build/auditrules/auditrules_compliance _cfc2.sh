@@ -73,10 +73,11 @@ logmessage(){
 }
 
 ask() {
-    # Assume cfc flag is always passed, and hence assume YES for everything
+    # Assume cfc flag is always true
     cfc=1
 
-    if [[ $fix ]] || [[ $cfc ]]; then
+    # Check if fix flag is passed or cfc is assumed, and automatically assume YES for everything
+    if [[ $fix ]] || [[ $cfc -eq 1 ]]; then
         return 0
     fi
 
@@ -106,7 +107,6 @@ ask() {
             Y*|y*) return 0 ;;
             N*|n*) return 1 ;;
         esac
-
     done
 }
 # function to display menus
