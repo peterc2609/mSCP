@@ -1,0 +1,63 @@
+Sure, here's a detailed breakdown of macOS features and services that may utilize any of the disallowed algorithms, modes, or protocols you mentioned.
+Symmetric Algorithms
+•	3DES-EDE-168, 3DES-EDE-112:
+•	Disk Images: While newer versions of macOS prefer AES for disk encryption, some older disk images may still use 3DES. Ensure that disk images are re-created with AES encryption if they are using 3DES.
+Symmetric Encryption Modes
+•	CTR, CBC, XTS, ECB:
+•	FileVault: Uses XTS mode of AES. This is considered one of the most secure modes for disk encryption but is disallowed according to your list.
+•	Keychain Services: Uses CBC mode of AES. This is common for encrypted data storage but is disallowed according to your list.
+•	Wi-Fi: WPA2 uses CBC mode with AES for CCMP, and WPA3 also uses AES in modes that may include CBC.
+•	Disk Images: Often use CBC mode for AES encryption. Check configurations and update to approved modes if necessary.
+Symmetric Authentication (MAC)
+•	CBC-MAC:
+•	Wi-Fi: WPA2 may use CBC-MAC in certain configurations, though more often it uses HMAC.
+Asymmetric Encryption
+•	ECDH with NIST P-521, NIST P-384, NIST P-256:
+•	TLS/SSL: Safari, Mail, and other apps may use these curves for key exchange in TLS connections. These curves are commonly used in public key infrastructure but are disallowed according to your list.
+Asymmetric Authentication (Signature)
+•	ECDSA with NIST P-521, NIST P-384, NIST P-256:
+•	TLS/SSL: These curves may be used in digital certificates for signing. Safari, Mail, and other apps may accept certificates signed with these algorithms.
+TLS/SSL Protocol Versions
+•	TLS 1.1, TLS 1.0, SSL 3.x:
+•	General System Use: Older versions of macOS may support these protocols for backward compatibility. Ensure that all systems are updated to use only TLS 1.2 or higher.
+TLS 1.3 Cipher Suites
+•	TLS_AES_128_CCM_8_SHA256:
+•	General TLS Connections: This is a less common cipher suite for TLS 1.3 and may be used in specific scenarios where lightweight encryption is needed.
+TLS 1.3 Signature Algorithms
+•	ecdsa_secp256r1_sha256, ecdsa_secp384r1_sha384, ecdsa_secp521r1_sha521:
+•	TLS Connections: These signature algorithms are often used in TLS connections for certificate validation. They may be used by default in Safari and other macOS applications.
+Server and Client SSH Authentication Keys
+•	DSA:
+•	SSH (Terminal): Older SSH keys might be using DSA. Modern recommendations suggest using Ed25519 or RSA keys instead.
+Password Hash Functions
+•	PBKDF2:
+•	Keychain Services and User Accounts: PBKDF2 is commonly used for hashing passwords. It’s considered secure but might not meet the latest recommendations compared to bcrypt or Argon2.
+SSH Protocol Versions
+•	PBKDF2:
+•	SSH (Terminal): This might be a typo in your list as PBKDF2 is a key derivation function, not an SSH protocol. Ensure clarification if this was intended to refer to password hashing within SSH configurations.
+SSH Cipher Suites
+•	AESx-CBC with HMAC-SHA2-y x=256,192,128 and y=512,256, 3DES-CBC with HMAC-SHA2-y y=512,256:
+•	SSH (Terminal): Older configurations might still support these cipher suites. Ensure SSH configurations are updated to use more secure options like aes256-gcm or chacha20-poly1305.
+SSH Key Exchange Methods
+•	ECDH-SHA2-NISTPX x=256,384,521:
+•	SSH (Terminal): These key exchange methods are widely used in SSH but are disallowed according to your list. Ensure configurations use approved methods like curve25519-sha256.
+IKE/IPSec Protocol Versions
+•	IKEv1:
+•	VPN: Older VPN configurations might still use IKEv1. Ensure all VPN configurations are updated to IKEv2, which is more secure and widely recommended.
+Summary of Affected Services
+1	FileVault: Uses XTS mode, which is disallowed.
+2	Keychain Services: Uses CBC mode for AES, and PBKDF2 for password hashing.
+3	Wi-Fi: Uses CBC-MAC and CBC mode for encryption in WPA2.
+4	Disk Images: May use CBC mode for AES encryption.
+5	Safari, Mail (TLS/SSL): Uses ECDH and ECDSA with NIST curves, may use disallowed TLS protocol versions and cipher suites.
+6	SSH (Terminal): Might use DSA keys, CBC cipher suites, and ECDH key exchange methods.
+7	VPN: Might use IKEv1.
+Recommendations:
+•	FileVault: Consider alternative encryption solutions if XTS mode is strictly disallowed.
+•	Keychain Services: Review and update encryption and hashing methods if CBC mode and PBKDF2 are not acceptable.
+•	Wi-Fi: Ensure WPA3 is configured correctly, avoiding disallowed modes and MACs.
+•	Disk Images: Recreate any existing images with allowed encryption modes.
+•	TLS/SSL: Update system and application configurations to avoid disallowed algorithms and protocols.
+•	SSH: Update SSH configurations to use more secure key types, cipher suites, and key exchange methods.
+•	VPN: Ensure all VPN configurations are using IKEv2.
+
