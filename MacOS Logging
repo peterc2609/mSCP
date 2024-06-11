@@ -1,13 +1,15 @@
-Detection of Unauthorized Information Processing Activities:
-macOS provides robust system-level logging and monitoring capabilities designed to detect unauthorized information processing activities. The system utilizes various built-in tools and frameworks, such as Unified Logging and the Apple System Logger (ASL), to capture detailed logs of system and application activities. These logs can be accessed through the Console app or via command-line tools like log and syslog.
+### System-Level Logging and Monitoring in macOS
 
-Monitoring Systems and Recording Security Events:
+**Detection of Unauthorized Information Processing Activities:**
+macOS provides robust system-level logging and monitoring capabilities designed to detect unauthorized information processing activities. The system utilizes various built-in tools and frameworks, such as Unified Logging and the Apple System Logger (ASL), to capture detailed logs of system and application activities. These logs can be accessed through the Console app or via command-line tools like `log` and `syslog`.
+
+**Monitoring Systems and Recording Security Events:**
 macOS continuously monitors system activities and records security events. The Unified Logging system in macOS collects logs from all system components and applications, enabling comprehensive monitoring. This logging framework categorizes logs into different levels (e.g., debug, info, error, fault) and stores them in a centralized log store. Security events, such as authentication attempts, system access, and application usage, are recorded and can be filtered for analysis.
 
-Operator and Fault Logging for Information Security:
+**Operator and Fault Logging for Information Security:**
 Operator logs and fault logging are integral to ensuring information security in macOS. The system generates logs for various operational activities, including user logins, system updates, and application installations. These logs help identify potential security issues and anomalies. Additionally, fault logs capture information about system errors and crashes, aiding in the identification and resolution of security vulnerabilities.
 
-Ensuring System Problem Identification:
+**Ensuring System Problem Identification:**
 macOS uses tools like Apple Diagnostics and built-in system health monitoring to identify and address system problems. These tools work in conjunction with logging mechanisms to provide real-time alerts and detailed reports on system health. By analyzing operator logs and fault logs, administrators can proactively identify and mitigate information security system problems.
 
-Overall, macOS’s comprehensive logging and monitoring framework ensures that unauthorized information processing activities are detected, security events are recorded, and system problems are promptly identified and resolved.
+Overall, macOS's comprehensive logging and monitoring framework ensures that unauthorized information processing activities are detected, security events are recorded, and system problems are promptly identified and resolved.
