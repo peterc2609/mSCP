@@ -1,7 +1,8 @@
 # Define the source and destination paths
 $sourcePath = ".\wallpaper.jpg"
-$destinationPath = "C:\ProgramData\wallpaper.jpg"
-$logFile = "C:\ProgramData\Copy-Wallpaper.log"
+$destinationDir = "C:\ProgramData\Microsoft\IntuneApps"
+$destinationPath = "$destinationDir\wallpaper.jpg"
+$logFile = "$destinationDir\Copy-Wallpaper.log"
 
 # Function to write to log file
 function Write-Log {
@@ -16,12 +17,26 @@ function Write-Log {
 # Start logging
 Write-Log "Starting file copy operation."
 
+# Check if the destination directory exists, create if it doesn't
+if (-Not (Test-Path -Path $destinationDir)) {
+    try {
+        New-Item -ItemType Directory -Path $destinationDir -Force
+        Write-Log "Created directory: $destinationDir"
+    } catch {
+        Write-Log "Failed to create directory: $_"
+        exit 1
+    }
+} else {
+    Write-Log "Directory already exists: $destinationDir"
+}
+
 # Copy the file to the destination
 try {
     Copy-Item -Path $sourcePath -Destination $destinationPath -Force
     Write-Log "File copied successfully to $destinationPath."
 } catch {
     Write-Log "Failed to copy the file: $_"
+    exit 1
 }
 
 # Finish logging
