@@ -1,0 +1,28 @@
+# Define the source and destination paths
+$sourcePath = ".\wallpaper.jpg"
+$destinationPath = "C:\ProgramData\wallpaper.jpg"
+$logFile = "C:\ProgramData\Copy-Wallpaper.log"
+
+# Function to write to log file
+function Write-Log {
+    param (
+        [string]$message
+    )
+    $timestamp = Get-Date -Format "yyyy-MM-dd HH:mm:ss"
+    $logMessage = "$timestamp - $message"
+    Add-Content -Path $logFile -Value $logMessage
+}
+
+# Start logging
+Write-Log "Starting file copy operation."
+
+# Copy the file to the destination
+try {
+    Copy-Item -Path $sourcePath -Destination $destinationPath -Force
+    Write-Log "File copied successfully to $destinationPath."
+} catch {
+    Write-Log "Failed to copy the file: $_"
+}
+
+# Finish logging
+Write-Log "File copy operation completed."
